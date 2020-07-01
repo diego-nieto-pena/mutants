@@ -18,15 +18,17 @@ public class DnaVerticalSequenceProcessor implements DnaSequenceProcesor {
 		int dnaConsecSequences = 0;
 		int n = dna.length;
 		
-		String[][] dnaArr = Builder.build2dArray(dna);
-		
-		for (int i = 0 ; i < n ; i++) {
-			 sb = new StringBuilder();
-		    for (int j = 0 ; j < n; j++) {
-		    	sb.append(dnaArr[j][i]);
-		    }
-		    String dnaStr = sb.toString().toLowerCase();
-		    dnaConsecSequences += DnaStringAnalyzer.analyzeSequence(dnaStr, nitroSeqValue);
+		if(n > 0) {
+			String[][] dnaArr = Builder.build2dArray(dna);
+			
+			for (int i = 0 ; i < n ; i++) {
+				 sb = new StringBuilder();
+			    for (int j = 0 ; j < n; j++) {
+			    	sb.append(dnaArr[j][i]);
+			    }
+			    String dnaStr = sb.toString().toLowerCase();
+			    dnaConsecSequences += DnaStringAnalyzer.analyzeSequence(dnaStr, nitroSeqValue);
+			}
 		}
 		
 		return dnaConsecSequences;

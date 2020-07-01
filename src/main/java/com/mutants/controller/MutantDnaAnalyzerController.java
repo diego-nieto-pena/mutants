@@ -27,6 +27,7 @@ public class MutantDnaAnalyzerController {
 	
 	@Autowired
 	private AnalyzerConfiguration conf;
+	
 	/**
 	 * 
 	 * @param dnaSequence

@@ -29,6 +29,14 @@ public class StatsApi {
 		this.mutantSequenceNum = mutantSequenceNum;
 		this.isMutant = isMutant;
 	}
+	
+	public StatsApi(long id, String dnaSequence, int mutantSequenceNum, Boolean isMutant) {
+		super();
+		this.id = id;
+		this.dnaSequence = dnaSequence;
+		this.mutantSequenceNum = mutantSequenceNum;
+		this.isMutant = isMutant;
+	}
 
 	public Long getId() {
 		return id;

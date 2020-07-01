@@ -21,17 +21,19 @@ public class DnaObliqueSequenceProcessor implements DnaSequenceProcesor {
 		
 		int n = dnaArr.length;
 		
-		for( int k = 0 ; k < n * 2 ; k++ ) {
-			sb = new StringBuilder();
-	        for( int j = 0 ; j <= k ; j++ ) {
-	            int i = k - j;
-	            if( i < n && j < n ) {
-	                sb.append(dnaArr[i][j]);
-	            }
-	        }
-	        String dnaStr = sb.toString().toLowerCase();
-	        dnaConsecSequences += DnaStringAnalyzer.analyzeSequence(dnaStr, nitroSeqValue);
-	    }
+		if(n > 0) {
+			for( int k = 0 ; k < n * 2 ; k++ ) {
+				sb = new StringBuilder();
+		        for( int j = 0 ; j <= k ; j++ ) {
+		            int i = k - j;
+		            if( i < n && j < n ) {
+		                sb.append(dnaArr[i][j]);
+		            }
+		        }
+		        String dnaStr = sb.toString().toLowerCase();
+		        dnaConsecSequences += DnaStringAnalyzer.analyzeSequence(dnaStr, nitroSeqValue);
+		    }	
+		}
 		
 		return dnaConsecSequences;
 	}

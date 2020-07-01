@@ -14,9 +14,11 @@ public class DnaHorizontalSequenceProcessor  implements DnaSequenceProcesor {
 	public int analyzeSequences(String[] dna, int nitroSeqValue) {
 		int dnaConsecSequences = 0;
 		
-		for(int i=0; i < dna.length; i++) {
-			String dnaStr = String.join("", dna[i]).toLowerCase();
-			dnaConsecSequences += DnaStringAnalyzer.analyzeSequence(dnaStr, nitroSeqValue);
+		if(dna.length > 0) {
+			for(int i=0; i < dna.length; i++) {
+				String dnaStr = String.join("", dna[i]).toLowerCase();
+				dnaConsecSequences += DnaStringAnalyzer.analyzeSequence(dnaStr, nitroSeqValue);
+			}	
 		}
 		
 		return dnaConsecSequences;

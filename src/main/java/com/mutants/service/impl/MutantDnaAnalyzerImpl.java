@@ -27,7 +27,6 @@ public class MutantDnaAnalyzerImpl implements MutantDnaAnalyzer {
 	@Autowired
 	private StatsApiService statsService;
 
-	
 	@Autowired
 	private AnalyzerConfiguration conf;
 	
