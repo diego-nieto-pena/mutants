@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mutants.conf.AnalyzerConfiguration;
 import com.mutants.exception.BadDnaSequenceException;
+import com.mutants.exception.InvalidDnaStructureException;
 import com.mutants.model.DnaSequence;
 import com.mutants.service.MutantDnaAnalyzer;
 
@@ -29,7 +30,7 @@ public class MutantDnaAnalyzerController {
 	private AnalyzerConfiguration conf;
 	
 	/**
-	 * 
+	 * Mutant DNA Analyzer method
 	 * @param dnaSequence
 	 * @return
 	 */
@@ -41,7 +42,16 @@ public class MutantDnaAnalyzerController {
 		List<String> dnaList = dnaSequence.getDna();
 		String dnaString = String.join("", dnaList);
 		
+		int n = dnaString.length();
+
+		if((n % conf.getDnaArrayLength()) != 0) {
+			logger.error("Invalid DNA structure sequence: {}", n);
+			throw new InvalidDnaStructureException(conf.getInvalidDnaStructureMsg());
+		}
+		
+		
 		if(!validDnaSequence(dnaString)) {
+			logger.error("Invalid DNA sequence: {}", dnaString);
 			throw new BadDnaSequenceException(conf.getInvalidDnaSequenceMsg());
 		}
 		
@@ -56,6 +66,12 @@ public class MutantDnaAnalyzerController {
 		return new ResponseEntity<Object>(HttpStatus.FORBIDDEN);
 	}
 	
+	/**
+	 * Validates if the DNS string contains only 
+	 * allowed characters
+	 * @param dna
+	 * @return
+	 */
 	private boolean validDnaSequence(String dna) {
 		Pattern pattern = Pattern.compile(conf.getAllowedNitroBase(), Pattern.CASE_INSENSITIVE);
 		if (!pattern.matcher(dna).matches()) {

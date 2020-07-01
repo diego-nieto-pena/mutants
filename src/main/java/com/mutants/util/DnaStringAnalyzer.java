@@ -2,6 +2,13 @@ package com.mutants.util;
 
 public class DnaStringAnalyzer {
 
+	/**
+	 * Finds mutant secuences
+	 * 
+	 * @param sequence
+	 * @param nitroSeqValue
+	 * @return
+	 */
 	public static int analyzeSequence(String sequence, int nitroSeqValue) {
 		
 		int dnaConsecSequence = 0;

@@ -1,5 +1,7 @@
 package com.mutants.service.impl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,8 @@ import com.mutants.service.StatsApiService;
 @Service
 public class MutantDnaAnalyzerImpl implements MutantDnaAnalyzer {
 
+	private static final Logger logger = LoggerFactory.getLogger(MutantDnaAnalyzerImpl.class);
+	
 	@Autowired
 	@Qualifier("horizontal")
 	private DnaSequenceProcesor horizontalProcessor;
@@ -30,6 +34,10 @@ public class MutantDnaAnalyzerImpl implements MutantDnaAnalyzer {
 	@Autowired
 	private AnalyzerConfiguration conf;
 	
+	/**
+	 * Sums up all the DNA occurrences
+	 * to determine mutant presence
+	 */
 	@Override
 	public boolean isMutant(String[] dna) {
 		boolean result = false;
@@ -43,6 +51,8 @@ public class MutantDnaAnalyzerImpl implements MutantDnaAnalyzer {
 		int obOccurrences = obliqueProcessor.analyzeSequences(dna, nitroSeqValue);
 		
 		int total = hOccurrences + vOccurrences + obOccurrences;
+		
+		logger.info("Total mutant DNA occurrences: {}", total);
 		
 		if(total >= conf.getConsecutiveNitroSequenceMinValue()) {
 			result = true;

@@ -6,15 +6,15 @@ import com.google.gson.annotations.SerializedName;
 public class StatsResult {
 
 	@SerializedName("count_mutant_dna")
-	@Expose
+	@Expose(serialize = true)
 	private Integer countMutantDna;
 
 	@SerializedName("count_human_dna")
-	@Expose
+	@Expose(serialize = true)
 	private Integer countHumanDna;
 
 	@SerializedName("ratio")
-	@Expose
+	@Expose(serialize = true)
 	private Double ratio;
 
 	public StatsResult() {

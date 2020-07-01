@@ -23,6 +23,13 @@ public class StatsApiServiceImpl implements StatsApiService {
 	@Autowired
 	private StatsApiJpaRepository jpaRepository;
 	
+	/**
+	 * DNA validation entry persistence
+	 * 
+	 * @param dnaSequence
+	 * @param mutantStrings
+	 * @param isMutant
+	 */
 	@Override
 	public StatsApi save(String dnaSequence, int mutantStrings, boolean isMutant) {
 		
@@ -30,6 +37,9 @@ public class StatsApiServiceImpl implements StatsApiService {
 		return jpaRepository.save(newEntry);
 	}
 
+	/**
+	 * Returns the Detector Statistics
+	 */
 	@Override
 	public StatsResult getStats() {
 		
@@ -60,6 +70,11 @@ public class StatsApiServiceImpl implements StatsApiService {
 		return null;
 	}
 	
+	/**
+	 * Rounds double values scale 2
+	 * @param value
+	 * @return
+	 */
 	private double roundUp(double value) {
 		BigDecimal bigD = BigDecimal.valueOf(value);
 		bigD = bigD.setScale(2, RoundingMode.HALF_UP);
@@ -67,6 +82,10 @@ public class StatsApiServiceImpl implements StatsApiService {
 		return bigD.doubleValue();
 	}
 
+	/**
+	 * Retrieve all API entries
+	 * from DB
+	 */
 	@Override
 	public List<StatsApi> findAll() {
 		return jpaRepository.findAll();

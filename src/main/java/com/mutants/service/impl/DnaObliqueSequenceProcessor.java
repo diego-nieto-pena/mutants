@@ -1,5 +1,7 @@
 package com.mutants.service.impl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
@@ -10,7 +12,12 @@ import com.mutants.util.DnaStringAnalyzer;
 @Component
 @Qualifier("oblique")
 public class DnaObliqueSequenceProcessor implements DnaSequenceProcesor {
+	
+	private static final Logger logger = LoggerFactory.getLogger(DnaObliqueSequenceProcessor.class);
 
+	/**
+	 * Analyzes obliques sequences
+	 */
 	@Override
 	public int analyzeSequences(String[] dna, int nitroSeqValue) {
 		
@@ -35,6 +42,7 @@ public class DnaObliqueSequenceProcessor implements DnaSequenceProcesor {
 		    }	
 		}
 		
+		logger.info("Oblique occurrences: {}", dnaConsecSequences);
 		return dnaConsecSequences;
 	}
 	

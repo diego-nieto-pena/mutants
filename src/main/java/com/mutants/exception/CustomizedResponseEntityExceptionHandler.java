@@ -24,7 +24,14 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 	}
 	
 	@ExceptionHandler(BadDnaSequenceException.class)
-	public final ResponseEntity<Object> handleUserNotFoundException(BadDnaSequenceException ex, WebRequest  request) throws Exception {
+	public final ResponseEntity<Object> handleBadDnaSequenceException(BadDnaSequenceException ex, WebRequest  request) throws Exception {
+		ExceptionResponse exceptionResponse = new ExceptionResponse(ex.getMessage(), request.getDescription(false), new Date());
+		
+		return new ResponseEntity<Object>(exceptionResponse, HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler(InvalidDnaStructureException.class)
+	public final ResponseEntity<Object> handleInvalidDnaStructureException(InvalidDnaStructureException ex, WebRequest  request) throws Exception {
 		ExceptionResponse exceptionResponse = new ExceptionResponse(ex.getMessage(), request.getDescription(false), new Date());
 		
 		return new ResponseEntity<Object>(exceptionResponse, HttpStatus.BAD_REQUEST);
