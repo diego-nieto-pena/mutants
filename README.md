@@ -57,6 +57,8 @@ Please, use Postman or any similar tool:
             }
 **Response: HTTP 200 OK**
 
+## API Documentation can be found at: http://mutantdnadetector-env.eba-7ukeavat.us-west-2.elasticbeanstalk.com/v2/api-docs
+
 ## Test Code coverage
 Running the code coverage report can be done by executing the following command at the root folder:
 > mvn test
