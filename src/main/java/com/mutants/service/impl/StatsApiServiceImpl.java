@@ -33,6 +33,12 @@ public class StatsApiServiceImpl implements StatsApiService {
 	@Override
 	public StatsApi save(String dnaSequence, int mutantStrings, boolean isMutant) {
 		
+		StatsApi statsApi = jpaRepository.findByDnaSequence(dnaSequence);
+		
+		if(statsApi != null) {
+			return new StatsApi();
+		}
+		
 		StatsApi newEntry = new StatsApi(dnaSequence, mutantStrings, isMutant);
 		return jpaRepository.save(newEntry);
 	}

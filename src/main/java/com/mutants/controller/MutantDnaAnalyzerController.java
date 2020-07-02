@@ -44,7 +44,7 @@ public class MutantDnaAnalyzerController {
 		
 		int n = dnaString.length();
 
-		if((n % conf.getDnaArrayLength()) != 0) {
+		if((n % Integer.parseInt(conf.getDnaArrayLength())) != 0) {
 			logger.error("Invalid DNA structure sequence: {}", n);
 			throw new InvalidDnaStructureException(conf.getInvalidDnaStructureMsg());
 		}

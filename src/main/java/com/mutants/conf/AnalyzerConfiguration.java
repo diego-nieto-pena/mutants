@@ -12,6 +12,9 @@ public class AnalyzerConfiguration {
 	@Value("${consecutive.nitro.sequence.min.value}")
 	private int consecutiveNitroSequenceMinValue;
 	
+	@Value("${dna.array.length}")
+	private String dnaArrayLength;
+	
 	@Value("${allowed.nitro.base}")
 	private String allowedNitroBase;
 	
@@ -20,9 +23,6 @@ public class AnalyzerConfiguration {
 	
 	@Value("${invalid.dna.structure.msg}")
 	private String invalidDnaStructureMsg;
-	
-	@Value("${dna.array.length}")
-	private int dnaArrayLength;
 	
 	public int getNitroSequenceValue() {
 		return nitroSequenceValue;
@@ -39,7 +39,7 @@ public class AnalyzerConfiguration {
 	public String getInvalidDnaStructureMsg() {
 		return invalidDnaStructureMsg;
 	}
-	public int getDnaArrayLength() {
+	public String getDnaArrayLength() {
 		return dnaArrayLength;
 	}
 }

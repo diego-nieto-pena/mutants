@@ -15,4 +15,6 @@ public interface StatsApiJpaRepository extends JpaRepository<StatsApi, Long> {
 	 */
 	@Query(value = "SELECT (select count(*) from stats_api where is_mutant = 1) as mutants, count(*) as total  FROM stats_api;", nativeQuery = true)
     List<Object[]> statsQuery();
+    
+    StatsApi findByDnaSequence(String dnaSequence);
 }
