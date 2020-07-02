@@ -35,7 +35,7 @@ Once the image build is done then execute:
 
 ## Executing the DNA detector web application
 Please, use Postman or any similar tool:
-- DNA sequence evaluation: Will be done by doing a **POST** request to <url>/mutant.
+- DNA sequence evaluation: Will be done by doing a **POST** request to http://mutantdnadetector-env.eba-7ukeavat.us-west-2.elasticbeanstalk.com/mutant.
     - Request Body.
         - Mutant DNA:
             - > {
@@ -48,7 +48,7 @@ Please, use Postman or any similar tool:
                  "dna":["GtGatG","AGgTaC","taaGtT","GtattT","CCcatT"]
                } 
        **Response: HTTP 403 FORBIDDEN**
-- Statistics report: Please execute a **GET** request to <url>/stats
+- Statistics report: Please execute a **GET** request to http://mutantdnadetector-env.eba-7ukeavat.us-west-2.elasticbeanstalk.com/stats
     - The response will have the following format:
         - >  {
                 "count_mutant_dna":4,
